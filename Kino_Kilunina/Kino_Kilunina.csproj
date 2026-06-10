@@ -113,12 +113,30 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\Connection.cs" />
+    <Compile Include="Classes\Context\AfishaContext.cs" />
+    <Compile Include="Classes\Context\KinoContext.cs" />
+    <Compile Include="Classes\Model\Afisha.cs" />
+    <Compile Include="Classes\Model\Kino.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\Afisha.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Kino.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\Afisha.xaml.cs">
+      <DependentUpon>Afisha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Kino.xaml.cs">
+      <DependentUpon>Kino.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -146,9 +164,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Classes\Context\" />
     <Folder Include="Elements\" />
-    <Folder Include="Pages\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\afisha.png" />
