@@ -62,6 +62,17 @@ namespace Kino_Kilunina.Classes.Context
             Connection.CloseConnection(connection);
         }
 
+        public bool HasByKinoteatr(int idKinoteatr)
+        {
+            var connection = Connection.OpenConnection();
+            var reader = Connection.Query($"SELECT COUNT(*) FROM Afisha WHERE IdKinoteatr = {idKinoteatr}", connection);
+            reader.Read();
+            int count = reader.GetInt32(0);
+            reader.Close();
+            Connection.CloseConnection(connection);
+            return count > 0;
+        }
+
         public void Delete(int id)
         {
             var connection = Connection.OpenConnection();

@@ -23,6 +23,7 @@ namespace Kino_Kilunina
         {
             InitializeComponent();
             init = this;
+            OpenPages(pages.kino);
         }
 
         public enum pages

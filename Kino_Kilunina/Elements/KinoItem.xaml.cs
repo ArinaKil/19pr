@@ -1,28 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Kino_Kilunina.Classes.Model;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Kino_Kilunina.Elements
 {
-    /// <summary>
-    /// Логика взаимодействия для KinoItem.xaml
-    /// </summary>
     public partial class KinoItem : UserControl
     {
-        public KinoItem()
+        public event Action<Kino> OnEdit;
+        public event Action<Kino> OnDelete;
+
+        private Kino _kino;
+
+        public KinoItem(Kino kino)
         {
             InitializeComponent();
+            SetData(kino);
+        }
+
+        public void SetData(Kino kino)
+        {
+            _kino = kino;
+            tbName.Text = kino.Name;
+            tbCountZal.Text = "Залов: " + kino.CountZal;
+            tbCount.Text = "Мест: " + kino.Count;
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            OnEdit?.Invoke(_kino);
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show($"Удалить «{_kino.Name}»?", "Подтверждение",
+                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                OnDelete?.Invoke(_kino);
+            }
         }
     }
 }

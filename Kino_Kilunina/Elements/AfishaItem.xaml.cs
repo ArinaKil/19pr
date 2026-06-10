@@ -1,28 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Kino_Kilunina.Classes.Model;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Kino_Kilunina.Elements
 {
-    /// <summary>
-    /// Логика взаимодействия для AfishaItem.xaml
-    /// </summary>
     public partial class AfishaItem : UserControl
     {
-        public AfishaItem()
+        public event Action<Afisha> OnEdit;
+        public event Action<Afisha> OnDelete;
+
+        private Afisha _afisha;
+
+        public AfishaItem(Afisha afisha)
         {
             InitializeComponent();
+            SetData(afisha);
+        }
+
+        public void SetData(Afisha afisha)
+        {
+            _afisha = afisha;
+            tbName.Text = afisha.Name;
+            tbTime.Text = "Время: " + afisha.Time.ToString("dd.MM.yyyy HH:mm");
+            tbPrice.Text = "Цена: " + afisha.Price + " руб.";
+            tbKinoteatr.Text = "Кинотеатр ID: " + afisha.IdKinoteatr;
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            OnEdit?.Invoke(_afisha);
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show($"Удалить «{_afisha.Name}»?", "Подтверждение",
+                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                OnDelete?.Invoke(_afisha);
+            }
         }
     }
 }
