@@ -104,6 +104,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Elements\AfishaItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Elements\KinoItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -117,10 +125,24 @@
     <Compile Include="Classes\Context\KinoContext.cs" />
     <Compile Include="Classes\Model\Afisha.cs" />
     <Compile Include="Classes\Model\Kino.cs" />
+    <Compile Include="Elements\AfishaItem.xaml.cs">
+      <DependentUpon>AfishaItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Elements\KinoItem.xaml.cs">
+      <DependentUpon>KinoItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\Add\Add_Afisha.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Add\Add_Kino.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Afisha.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -131,6 +153,12 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\Add\Add_Afisha.xaml.cs">
+      <DependentUpon>Add_Afisha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Add\Add_Kino.xaml.cs">
+      <DependentUpon>Add_Kino.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Afisha.xaml.cs">
       <DependentUpon>Afisha.xaml</DependentUpon>
     </Compile>
@@ -163,9 +191,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Elements\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\afisha.png" />
     <Resource Include="Images\cinema.png" />
