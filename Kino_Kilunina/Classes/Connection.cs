@@ -9,7 +9,7 @@ namespace Kino_Kilunina.Classes
 {
     public class Connection
     {
-        public static readonly string config = "server=127.0.0.1;uid=root;pwd=;database=Kino;";
+        public static readonly string config = "server=localhost;port=3307;uid=root;pwd=;database=Kino;";
 
         public static MySqlConnection OpenConnection()
         {
